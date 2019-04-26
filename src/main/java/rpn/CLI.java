@@ -17,17 +17,27 @@ public class CLI {
         int lenght = exploded.length;
         int j = 0;
         Long resultat = 0L;
+        System.out.println("lenght : " + lenght);
         if(lenght == 1) {
             return Long.parseLong(exploded[0]);
         }
         else if (lenght > 1){
-            System.out.println("lenght : " + lenght);
-            for(int i = lenght ; i > 3 ; i--){
+
+            for(int i = lenght ; i > 2 ; i--){
                 System.out.println("value array : " + exploded[i-1]);
                 if(exploded[i-1].equals("+")){
-                    resultat = resultat + Long.parseLong(exploded[j]) + Long.parseLong(exploded[j+1]);
+                    if(lenght-j == 1){
+                        System.out.println("legnth - j = 1");
+                        resultat = resultat + Long.parseLong(exploded[j]);
+                        System.out.println("resultat  = "+resultat);
+                    }
+                    else{
+                        resultat = resultat + Long.parseLong(exploded[j]) + Long.parseLong(exploded[j+1]);
+                    }
+
                 }
                 j++ ;
+                j++;
 
             }
             return resultat;
